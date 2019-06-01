@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "249184712118",
+    "firebase_url": "https://angel-hack-e01ae.firebaseio.com",
+    "project_id": "angel-hack-e01ae",
+    "storage_bucket": "angel-hack-e01ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249184712118:android:2376188fc483d0e4",
+        "android_client_info": {
+          "package_name": "com.example.angelhack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249184712118-6h74ohrem7aan95thunfnk0hlmgee5ob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.angelhack",
+            "certificate_hash": "dd733e6b9d3193ee8ae7a4dafba132fdec67a907"
+          }
+        },
+        {
+          "client_id": "249184712118-9bsmcltema180bqenjmja6qn3haongad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu3VQQBextgIwu3iWsr2Xuh0lk9jQ1DrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249184712118-9bsmcltema180bqenjmja6qn3haongad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
