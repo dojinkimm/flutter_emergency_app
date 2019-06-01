@@ -15,14 +15,18 @@ class BuildBuildings extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      building(docDetail[0], 95.0, [13.0, 30.0, 0.0, 0.0], context),
-                      building(docDetail[1], 235.0, [7.0, 38.0, 0.0, 0.0], context),
+                      building(
+                          docDetail[0], 95.0, [13.0, 30.0, 0.0, 0.0], context),
+                      building(
+                          docDetail[1], 235.0, [7.0, 38.0, 0.0, 0.0], context),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      building(docDetail[2], 270.0, [30.0, 106, 0.0, 0.0], context),
-                      building(docDetail[3], 80.0, [0.0, 65.0, 0.0, 0.0], context),
+                      building(
+                          docDetail[2], 270.0, [30.0, 106, 0.0, 0.0], context),
+                      building(
+                          docDetail[3], 80.0, [0.0, 65.0, 0.0, 0.0], context),
                     ],
                   )
                 ],
@@ -39,30 +43,30 @@ class BuildBuildings extends StatelessWidget {
           child: Opacity(
             opacity: 0.5,
             child: InkWell(
-              onTap: (){
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return DetailDialog();
-                  }
-                );
+              onTap: () {
+                if (image['floor'].length != 0) {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DetailDialog();
+                      });
+                }
               },
               child: Image.network(
                 image['URL'],
                 width: width,
               ),
             ),
-            
           ),
         ),
         Center(
-            child: statusSky(
+            child: statusSky(image,context,
                 image['left'], image['name'], image['left'] == 0 ? 60.0 : 30.0))
       ],
     );
   }
 
-  Widget statusSky(int number, String name, double margin) {
+  Widget statusSky(Map doc, BuildContext context, int number, String name, double margin) {
     Color color = number > 10
         ? (Colors.red)
         : (number > 0 ? (Colors.yellow) : (Colors.green));
@@ -79,7 +83,15 @@ class BuildBuildings extends StatelessWidget {
                 child: RaisedButton(
                   color: color,
                   elevation: 5.0,
-                  onPressed: () {},
+                  onPressed: () {
+                    if (doc['floor'].length != 0) {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return DetailDialog(doc: doc);
+                          });
+                    }
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
                   child: Container(
@@ -121,15 +133,15 @@ class BuildBuildings extends StatelessWidget {
   Widget building3D(List doc) {
     return Column(
       children: <Widget>[
-       Container(
-         margin: const EdgeInsets.fromLTRB(50.0, 50.0,0.0,0.0),
-         child:  Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[status3D(doc[2]['left'], doc[2]['name'], 10.0)],
-        ),
-       ),
         Container(
-         margin: const EdgeInsets.fromLTRB(120.0, 50.0,0.0,0.0),
+          margin: const EdgeInsets.fromLTRB(50.0, 50.0, 0.0, 0.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[status3D(doc[2]['left'], doc[2]['name'], 10.0)],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.fromLTRB(120.0, 50.0, 0.0, 0.0),
           child: Row(
             children: <Widget>[
               status3D(doc[1]['left'], doc[1]['name'], 10.0),

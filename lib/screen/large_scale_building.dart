@@ -27,7 +27,7 @@ class _LargeScaleBuildingState extends State<LargeScaleBuilding> {
             .where("name", isEqualTo: "엔젤 해커톤 병원")
             .snapshots(),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) {
+          if (!snapshot.hasData || snapshot.data==null) {
             return Container();
           } else {
             final doc = snapshot.data.documents[0];
