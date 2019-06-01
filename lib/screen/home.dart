@@ -7,10 +7,12 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        child: RaisedButton(
+        child: Center(
+          child: RaisedButton(
           onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (_)=>LargeScaleBuilding())),
           child: Text("PRESS"),
         ),
+        )
       ),
     );
   }
