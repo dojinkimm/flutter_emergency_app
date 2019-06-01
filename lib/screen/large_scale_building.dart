@@ -3,8 +3,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './widget/build_buildings.dart';
 import './widget/bottomsheet.dart';
 
-class LargeScaleBuilding extends StatelessWidget {
+class LargeScaleBuilding extends StatefulWidget {
+  @override
+  _LargeScaleBuildingState createState() => _LargeScaleBuildingState();
+}
+
+class _LargeScaleBuildingState extends State<LargeScaleBuilding> {
   final TextEditingController _controller = new TextEditingController();
+  bool skyView;
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    skyView=true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +34,7 @@ class LargeScaleBuilding extends StatelessWidget {
             return Stack(
               children: <Widget>[
                 new Container(
-                  child: Image.network(doc['LargeBuildingURL']),
+                  child: skyView?Image.network(doc['LargeBuildingURL']):Image.network(doc['3DView']),
                   width: double.infinity,
                 ),
                 buildingPage(doc, context)
@@ -56,27 +69,31 @@ class LargeScaleBuilding extends StatelessWidget {
             margin: const EdgeInsets.only(top: 60.0, right: 10.0),
             child: Column(
               children: <Widget>[
-                dimensionSelection("sky", Colors.white),
+                dimensionSelection("sky"),
                 SizedBox(
                   height: 10.0,
                 ),
-                dimensionSelection("3D", Colors.white30)
+                dimensionSelection("3D")
               ],
             ),
           ),
-          BuildBuildings(docDetail: doc['detail'])
+          BuildBuildings(docDetail: doc['detail'], skyView: skyView)
         ],
       ),
       bottomSheet: Bottomsheet(doc: doc)
     );
   }
 
-  Widget dimensionSelection(String version, Color opacity) {
+  Widget dimensionSelection(String version) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        setState(() {
+          skyView=!skyView;
+        });
+      },
       child: ClipOval(
           child: Container(
-              color: opacity,
+              color: ((skyView)&&(version=="sky"))?Colors.white:((!skyView)&&(version=="3D"))?Colors.white:Colors.white30,
               width: 40.0,
               height: 40.0,
               child: Center(
@@ -87,5 +104,4 @@ class LargeScaleBuilding extends StatelessWidget {
               )))),
     );
   }
-
 }
