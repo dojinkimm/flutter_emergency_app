@@ -1,3 +1,4 @@
+import 'package:angel_hack/screen/widget/detail_dialog.dart';
 import 'package:flutter/material.dart';
 
 class BuildBuildings extends StatelessWidget {
@@ -14,14 +15,14 @@ class BuildBuildings extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      building(docDetail[0], 95.0, [13.0, 30.0, 0.0, 0.0]),
-                      building(docDetail[1], 235.0, [7.0, 38.0, 0.0, 0.0]),
+                      building(docDetail[0], 95.0, [13.0, 30.0, 0.0, 0.0], context),
+                      building(docDetail[1], 235.0, [7.0, 38.0, 0.0, 0.0], context),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      building(docDetail[2], 270.0, [30.0, 106, 0.0, 0.0]),
-                      building(docDetail[3], 80.0, [0.0, 65.0, 0.0, 0.0]),
+                      building(docDetail[2], 270.0, [30.0, 106, 0.0, 0.0], context),
+                      building(docDetail[3], 80.0, [0.0, 65.0, 0.0, 0.0], context),
                     ],
                   )
                 ],
@@ -29,7 +30,7 @@ class BuildBuildings extends StatelessWidget {
             : building3D(docDetail));
   }
 
-  Widget building(Map image, double width, List<double> arr) {
+  Widget building(Map image, double width, List<double> arr, context) {
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
@@ -37,10 +38,21 @@ class BuildBuildings extends StatelessWidget {
           margin: EdgeInsets.fromLTRB(arr[0], arr[1], arr[2], arr[3]),
           child: Opacity(
             opacity: 0.5,
-            child: Image.network(
-              image['URL'],
-              width: width,
+            child: InkWell(
+              onTap: (){
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return DetailDialog();
+                  }
+                );
+              },
+              child: Image.network(
+                image['URL'],
+                width: width,
+              ),
             ),
+            
           ),
         ),
         Center(
