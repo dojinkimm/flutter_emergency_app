@@ -69,7 +69,8 @@ class BuildBuildings extends StatelessWidget {
   Widget statusSky(Map doc, BuildContext context, int number, String name, double margin) {
     Color color = number > 10
         ? (Colors.red)
-        : (number > 0 ? (Colors.yellow) : (Colors.green));
+        : (number > 0 ? (Color.fromRGBO(249, 172, 56,1.0)):(Color.fromRGBO(32, 215, 182,1.0)));
+   
     return Container(
       margin: EdgeInsets.only(top: margin),
       child: Stack(
@@ -157,7 +158,7 @@ class BuildBuildings extends StatelessWidget {
   Widget status3D(int number, String name, double margin) {
     Color color = number > 10
         ? (Colors.red)
-        : (number > 0 ? (Colors.yellow) : (Colors.green));
+        : (number > 0 ? (Color.fromRGBO(249, 172, 56,1.0)):(Color.fromRGBO(32, 215, 182,1.0)));
     return Container(
       margin: EdgeInsets.only(top: margin),
       child: Stack(

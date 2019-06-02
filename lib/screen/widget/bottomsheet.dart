@@ -74,7 +74,8 @@ class Bottomsheet extends StatelessWidget {
 
   Widget body(DocumentSnapshot doc, String mainTitle, String sub1, String sub2,
       String sub1_2, String sub2_2, BuildContext context, bool first) {
-    TextStyle _textStyle = TextStyle(color: Colors.green);
+         Color green = (Color.fromRGBO(32, 215, 182,1.0));
+    TextStyle _textStyle = TextStyle(color: green);
     return Container(
         margin: const EdgeInsets.only(left: 20.0),
         child: Column(
@@ -125,6 +126,7 @@ class Bottomsheet extends StatelessWidget {
 
   Widget linearProgressBar(BuildContext context, int identified, int totalNum) {
   double percent = double.parse((identified/totalNum).toStringAsFixed(2));
+   Color green = (Color.fromRGBO(32, 215, 182,1.0));
 
     return Stack(
       children: <Widget>[
@@ -145,7 +147,7 @@ class Bottomsheet extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.9*percent,
           height: MediaQuery.of(context).size.height * 0.03,
           child: RaisedButton(
-              color: Colors.green,
+              color: green,
               onPressed: () {},
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),

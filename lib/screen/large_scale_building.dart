@@ -4,6 +4,8 @@ import './widget/build_buildings.dart';
 import './widget/bottomsheet.dart';
 
 class LargeScaleBuilding extends StatefulWidget {
+  final word;
+  LargeScaleBuilding({Key key, this.word});
   @override
   _LargeScaleBuildingState createState() => _LargeScaleBuildingState();
 }
@@ -52,6 +54,7 @@ class _LargeScaleBuildingState extends State<LargeScaleBuilding> {
             controller: _controller,
             decoration: new InputDecoration(
               suffixIcon: Icon(Icons.search),
+              labelText: widget.word.text,
               fillColor: Colors.white70,
               filled: true,
             ),
