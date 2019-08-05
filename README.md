@@ -1,4 +1,4 @@
-# Angel_hack
+# Flutter Emergency App Made during Angel Hackathon
 2019에 진행된 엔젤해커톤 결과물입니다.
 <div align="center">
 <img src="assets/screenshot/logo.png" width="400px"/></div>
